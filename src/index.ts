@@ -49,6 +49,7 @@ export default {
 			headers: {
 				'Content-Type': 'application/json',
 				'X-Helius-Cloudflare-Proxy': 'true',
+				...corsHeaders,
 			}
 		});
 
