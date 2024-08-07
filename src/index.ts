@@ -16,7 +16,7 @@ export default {
 		const supportedDomains = env.CORS_ALLOW_ORIGIN ? env.CORS_ALLOW_ORIGIN.split(',') : undefined;
 		const corsHeaders: Record<string, string> = {
 			"Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, OPTIONS",
-			"Access-Control-Allow-Headers": "https:///text-adventure.ai",
+			"Access-Control-Allow-Headers": "*",
 		}
 		if (supportedDomains) {
 			const origin = request.headers.get('Origin')
@@ -24,7 +24,7 @@ export default {
 				corsHeaders['Access-Control-Allow-Origin'] = origin
 			}
 		} else {
-			corsHeaders['Access-Control-Allow-Origin'] = 'https:///text-adventure.ai'
+			corsHeaders['Access-Control-Allow-Origin'] = '*'
 		}
 
 		if (request.method === "OPTIONS") {
@@ -49,7 +49,6 @@ export default {
 			headers: {
 				'Content-Type': 'application/json',
 				'X-Helius-Cloudflare-Proxy': 'true',
-				...corsHeaders,
 			}
 		});
 
